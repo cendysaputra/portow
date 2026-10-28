@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { StageTone } from "@/components/stage-tone";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -9,8 +10,12 @@ export const metadata: Metadata = {
 export default function CvPage() {
   return (
     <main className="cv-page">
+      <StageTone paper="#f4f1ea" ink="#1c2430" />
       <p className="eyebrow">Curriculum vitae</p>
-      <h1>{site.name}</h1>
+      <h1>
+        {site.name}
+        <span>.</span>
+      </h1>
       <p className="role">{site.role}</p>
       <p className="intro">{site.about.body}</p>
       <div className="cv-actions">

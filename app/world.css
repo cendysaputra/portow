@@ -421,6 +421,104 @@
   opacity: 0.75;
 }
 
+.case-page {
+  min-height: 100svh;
+}
+
+.case-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  gap: 40px;
+  align-items: start;
+  padding: calc(var(--header-h) + 28px) var(--pad) 120px;
+  overflow: hidden;
+}
+
+.case-copy h1 {
+  margin: 8px 0 18px;
+  max-width: 16ch;
+  font-size: clamp(46px, 5.2vw, 78px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.case-copy p {
+  max-width: 460px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.case-poster {
+  border: 1.5px solid color-mix(in srgb, currentColor 55%, transparent);
+  padding: 28px 28px 20px;
+  margin-top: 12px;
+}
+
+.case-poster svg {
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+}
+
+.case-poster-label {
+  margin: 16px 0 0;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.04em;
+}
+
+.case-figure {
+  position: absolute;
+  left: 6%;
+  bottom: 14%;
+  width: 130px;
+  height: auto;
+}
+
+.case-hero .ground {
+  bottom: 72px;
+}
+
+.case-steps {
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 28px;
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+
+.case-steps a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  white-space: nowrap;
+  opacity: 0.8;
+  border-bottom: 1px solid transparent;
+}
+
+.case-steps a:first-child {
+  border-bottom-color: currentColor;
+  opacity: 1;
+}
+
+.case-notes {
+  padding: 20px var(--pad) 80px;
+}
+
+.case-notes .project-facts {
+  border-top-color: color-mix(in srgb, currentColor 28%, transparent);
+}
+
+.case-notes .project-next a {
+  border-bottom-color: currentColor;
+}
+
 .walk-track.is-reduced {
   height: auto;
 }
@@ -483,6 +581,20 @@
   .reading-project .line-icon {
     grid-column: 4;
     grid-row: 1 / 3;
+  }
+
+  .case-hero {
+    grid-template-columns: 1fr;
+    padding-bottom: 150px;
+  }
+
+  .case-copy h1 {
+    max-width: none;
+    font-size: 40px;
+  }
+
+  .case-figure {
+    width: 96px;
   }
 }
 

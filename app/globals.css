@@ -801,9 +801,12 @@ button:focus-visible {
 }
 
 .cv-page {
-  max-width: 820px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 150px 32px 90px;
+  background: #f4f1ea;
+  color: #1c2430;
+  min-height: 100svh;
 }
 
 .cv-page h1 {
@@ -870,6 +873,16 @@ button:focus-visible {
 .cv-actions a {
   border-bottom: 1px solid currentColor;
   padding-bottom: 5px;
+}
+
+.cv-actions a:first-child {
+  border: 0;
+  background: #243044;
+  color: #f7f4ee;
+  padding: 12px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .cv-contact {
