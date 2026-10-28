@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
+import { WorkWalk } from "@/components/work-walk";
 import { projects, site } from "@/content/site";
-import { PageFooter } from "@/components/page-footer";
-import { WorkGrid } from "@/components/work-grid";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -10,13 +9,8 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <main className="static-page">
-      <header className="page-heading">
-        <h1>{site.workIntro.pageTitle}</h1>
-        <p>{site.workIntro.pageNote}</p>
-      </header>
-      <WorkGrid projects={projects} />
-      <PageFooter />
+    <main id="top">
+      <WorkWalk projects={projects} />
     </main>
   );
 }
