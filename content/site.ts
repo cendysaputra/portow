@@ -70,10 +70,10 @@ export const site = {
     { label: "GitHub", href: "https://github.com/cendysaputra" },
   ],
   focus: [
-    "Focus placeholder",
-    "Focus placeholder",
-    "Focus placeholder",
-    "Focus placeholder",
+    "Focus placeholder 01",
+    "Focus placeholder 02",
+    "Focus placeholder 03",
+    "Focus placeholder 04",
   ],
   experience: [
     {

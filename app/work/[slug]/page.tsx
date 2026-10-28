@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Cover } from "@/components/cover";
 import { PageFooter } from "@/components/page-footer";
-import { getProject, projects, site } from "@/content/site";
+import { getProject, projects } from "@/content/site";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
