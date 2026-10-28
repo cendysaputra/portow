@@ -7,6 +7,7 @@
  */
 
 export type Motif = "frames" | "orbit" | "dots" | "band" | "bars" | "bracket";
+export type Frame = "browser" | "phone";
 
 export type Project = {
   slug: string;
@@ -14,9 +15,13 @@ export type Project = {
   year: string;
   role: string;
   client: string;
+  discipline: string;
   summary: string;
   lead: string;
   motif: Motif;
+  frame: Frame;
+  stage: string;
+  ink: string;
   facts: { label: string; value: string }[];
   sections: { heading: string; body: string }[];
 };
@@ -24,9 +29,11 @@ export type Project = {
 export type Chapter = {
   id: string;
   label: string;
-  kind: "hero" | "split" | "end";
+  kind: "signature" | "split" | "end";
   eyebrow: string;
   title: string;
+  paper: string;
+  ink: string;
   lead?: string;
   note?: string;
   paragraphs?: string[];
@@ -116,6 +123,10 @@ export const projects: Project[] = [
     year: "Year",
     role: "Role placeholder",
     client: "Client placeholder",
+    discipline: "Discipline placeholder",
+    frame: "browser",
+    stage: "#5b46c2",
+    ink: "#f6f4ff",
     summary:
       "Project summary placeholder. A sentence on the problem and what changed.",
     lead: "Project lead placeholder. A slightly longer opening for the case page.",
@@ -142,6 +153,10 @@ export const projects: Project[] = [
     year: "Year",
     role: "Role placeholder",
     client: "Client placeholder",
+    discipline: "Discipline placeholder",
+    frame: "browser",
+    stage: "#245a92",
+    ink: "#f3f7fb",
     summary:
       "Project summary placeholder. A sentence on the interface and the system behind it.",
     lead: "Project lead placeholder. Replace with the one-line story of this project.",
@@ -168,6 +183,10 @@ export const projects: Project[] = [
     year: "Year",
     role: "Role placeholder",
     client: "Client placeholder",
+    discipline: "Discipline placeholder",
+    frame: "phone",
+    stage: "#1d4e86",
+    ink: "#f3f7fb",
     summary:
       "Project summary placeholder. A sentence on the product, the audience, and the result.",
     lead: "Project lead placeholder. Keep it concrete and short.",
@@ -194,6 +213,10 @@ export const projects: Project[] = [
     year: "Year",
     role: "Role placeholder",
     client: "Client placeholder",
+    discipline: "Discipline placeholder",
+    frame: "browser",
+    stage: "#3c6758",
+    ink: "#f3f7f4",
     summary:
       "Project summary placeholder. A sentence on structure, navigation, and tone.",
     lead: "Project lead placeholder. What this piece of work had to hold together.",
@@ -220,6 +243,10 @@ export const projects: Project[] = [
     year: "Year",
     role: "Role placeholder",
     client: "Client placeholder",
+    discipline: "Discipline placeholder",
+    frame: "phone",
+    stage: "#7a4552",
+    ink: "#fbf5f6",
     summary:
       "Project summary placeholder. A sentence on a tool, a flow, or a system.",
     lead: "Project lead placeholder. The job this interface was hired to do.",
@@ -246,6 +273,10 @@ export const projects: Project[] = [
     year: "Year",
     role: "Role placeholder",
     client: "Client placeholder",
+    discipline: "Discipline placeholder",
+    frame: "browser",
+    stage: "#3e4c68",
+    ink: "#f4f6fa",
     summary:
       "Project summary placeholder. A sentence on a launch, a redesign, or a prototype.",
     lead: "Project lead placeholder. The last thing a visitor should remember.",
@@ -272,9 +303,11 @@ export const chapters: Chapter[] = [
   {
     id: "begin",
     label: "The beginning",
-    kind: "hero",
+    kind: "signature",
     eyebrow: site.hero.eyebrow,
     title: site.name,
+    paper: "#ffffff",
+    ink: "#171717",
     lead: site.hero.lead,
     note: site.hero.note,
   },
@@ -282,16 +315,20 @@ export const chapters: Chapter[] = [
     id: "practice",
     label: "The practice",
     kind: "split",
-    eyebrow: "01  —  About",
+    eyebrow: "About",
     title: site.about.title,
-    paragraphs: [site.about.body, site.about.note],
+    paper: "#3d5a86",
+    ink: "#f4f7fb",
+    paragraphs: [site.about.body],
   },
   {
     id: "work",
     label: "Selected work",
     kind: "split",
-    eyebrow: "02  —  Work",
+    eyebrow: "Selected work",
     title: site.workIntro.title,
+    paper: "#78545a",
+    ink: "#fbf6f5",
     paragraphs: [site.workIntro.body],
     projectSlugs: ["project-one", "project-two", "project-three"],
   },
@@ -299,8 +336,10 @@ export const chapters: Chapter[] = [
     id: "contact",
     label: "Contact",
     kind: "end",
-    eyebrow: "03  —  Contact",
+    eyebrow: "Contact",
     title: site.contact.title,
+    paper: "#4d645c",
+    ink: "#f4f7f5",
     lead: site.contact.lead,
     note: site.contact.note,
   },
