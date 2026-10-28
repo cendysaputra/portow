@@ -1,12 +1,266 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #171717;
+  --muted: #72716c;
+  --hair: #deded9;
+  --paper: #ffffff;
+  --well: #f4f4f1;
+  --track: #f3f3f0;
+  --pad: clamp(24px, 5vw, 88px);
+  --header-h: 94px;
+  --font-sans: "Helvetica Neue", Helvetica, var(--font-inter), Arial, sans-serif;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-hair: var(--hair);
+  --color-paper: var(--paper);
+  --color-well: var(--well);
+  --font-sans: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+button:hover {
+  color: #777777;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 7px;
+}
+
+::selection {
+  background: var(--ink);
+  color: white;
+}
+
+.skip {
+  position: fixed;
+  top: -120px;
+  left: 20px;
+  z-index: 100;
+  background: var(--ink);
+  color: white;
+  padding: 14px 18px;
+  font-size: 14px;
+}
+
+.skip:focus {
+  top: 20px;
+  color: white;
+}
+
+.site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  z-index: 20;
+  background: linear-gradient(#ffffff 75%, #ffffff00);
+}
+
+.wordmark {
+  font-size: 23px;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.wordmark:hover {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+}
+
+.site-header nav a[aria-current="page"] {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.site-header sup {
+  font-size: 9px;
+  margin-left: 3px;
+  color: var(--muted);
+  position: relative;
+  top: -0.4em;
+}
+
+.line-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.14em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin: 0 0 26px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.hero-static {
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 8vh) var(--pad) 80px;
+}
+
+.hero-static h1 {
+  font-size: clamp(56px, 7.8vw, 120px);
+  font-weight: 400;
+  letter-spacing: -0.063em;
+  line-height: 0.96;
+  margin: 0 0 30px;
+}
+
+.hero-static .lead {
+  max-width: 470px;
+  font-size: 19px;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  margin: 0 0 6px;
+}
+
+.hero-static .note {
+  max-width: 470px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --header-h: 78px;
+  }
+
+  .site-header {
+    padding-inline: 20px;
+    gap: 8px;
+  }
+
+  .wordmark {
+    font-size: 21px;
+  }
+
+  .site-header nav {
+    gap: 6px;
+    font-size: 16px;
+  }
+
+  .site-header nav a {
+    padding-inline: 3px;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .site-header sup {
+    display: none;
+  }
+
+  .site-header .line-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero-static {
+    padding-top: 28svh;
+  }
+
+  .hero-static h1 {
+    font-size: clamp(40px, 11.5vw, 64px);
+    white-space: normal;
+  }
+
+  .hero-static .lead {
+    font-size: 16px;
+  }
+
+  .hero-static .note {
+    font-size: 14px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
