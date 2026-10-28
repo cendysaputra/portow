@@ -686,6 +686,113 @@ button:focus-visible {
   margin: 13px 0 0;
 }
 
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid transparent;
+}
+
+.back-button:hover {
+  border-bottom-color: currentColor;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.project-header {
+  max-width: 1000px;
+  margin-bottom: 45px;
+}
+
+.project-header h1 {
+  font-size: clamp(42px, 5.5vw, 85px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  margin: 8px 0 22px;
+}
+
+.project-header .lead {
+  font-size: 22px;
+  line-height: 1.45;
+  max-width: 760px;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.project-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  border-top: 1px solid var(--hair);
+  padding-top: 24px;
+  margin: 40px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.project-facts .eyebrow {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.project-facts dd {
+  margin: 0;
+}
+
+.project-figure {
+  margin: 45px 0;
+}
+
+.project-figure .cover {
+  width: 100%;
+  height: auto;
+  background: var(--well);
+  aspect-ratio: 1.7;
+}
+
+.project-figure figcaption {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+.project-narrative {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 60px 0;
+}
+
+.project-narrative h2 {
+  font-size: 29px;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  margin: 0 0 18px;
+}
+
+.project-narrative p {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0;
+}
+
+.project-next {
+  margin: 10px 0 0;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+}
+
+.project-next a {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+}
+
 .page-footer {
   border-top: 1px solid var(--hair);
   display: flex;
@@ -929,6 +1036,24 @@ button:focus-visible {
 
   .static-page {
     padding-top: calc(var(--header-h) + 18px);
+  }
+
+  .project-header .lead {
+    font-size: 18px;
+  }
+
+  .project-facts,
+  .project-narrative {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .project-narrative {
+    margin: 30px 0;
+  }
+
+  .project-figure {
+    margin: 30px 0;
   }
 }
 
