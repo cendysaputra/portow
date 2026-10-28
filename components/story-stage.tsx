@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { chapters } from "@/content/site";
 import { ChapterCopy } from "@/components/chapter-copy";
+import { DrawingHand, LineFigure } from "@/components/drawings";
 import { IconArrowDown, IconClose, IconPlus } from "@/components/icons";
-import { Thread } from "@/components/thread";
 
 export function StoryStage() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -15,6 +15,8 @@ export function StoryStage() {
   const [progress, setProgress] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [ready, setReady] = useState(false);
+
+  const chapter = chapters[index];
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -28,17 +30,30 @@ export function StoryStage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (reduced) return;
+    const root = document.documentElement;
+    root.style.setProperty("--stage", chapter.paper);
+    root.style.setProperty("--ink", chapter.ink);
+    root.style.background = chapter.paper;
+    return () => {
+      root.style.removeProperty("--stage");
+      root.style.removeProperty("--ink");
+      root.style.background = "";
+    };
+  }, [chapter.paper, chapter.ink, reduced]);
+
   const scrollToChapter = useCallback(
     (next: number, behavior: ScrollBehavior) => {
       const clamped = Math.min(chapters.length - 1, Math.max(0, next));
       if (reduced) {
-        document.getElementById(chapters[clamped].id)?.scrollIntoView({ behavior: "auto" });
+        document.getElementById(chapters[clamped].id)?.scrollIntoView({ behavior: "auto", block: "start" });
         return;
       }
       const track = trackRef.current;
       if (!track) return;
       const scrollable = Math.max(track.offsetHeight - window.innerHeight, 1);
-      const top = track.offsetTop + ((clamped + 0.04) / chapters.length) * scrollable;
+      const top = track.offsetTop + ((clamped + 0.08) / chapters.length) * scrollable;
       window.scrollTo({ top, behavior });
     },
     [reduced],
@@ -78,46 +93,39 @@ export function StoryStage() {
 
   useEffect(() => {
     const openFromHash = () => {
-      if (window.location.hash === "#contact") {
-        scrollToChapter(chapters.length - 1, "auto");
-      }
-      if (window.location.hash === "#begin") {
-        scrollToChapter(0, "auto");
-      }
+      if (window.location.hash === "#contact") scrollToChapter(chapters.length - 1, "auto");
+      if (window.location.hash === "#begin") scrollToChapter(0, "auto");
     };
     openFromHash();
     window.addEventListener("hashchange", openFromHash);
     return () => window.removeEventListener("hashchange", openFromHash);
   }, [scrollToChapter]);
 
-  const chapter = chapters[index];
-
-  const openChapters = () => {
-    dialogRef.current?.showModal();
-  };
-
-  const closeChapters = () => {
-    dialogRef.current?.close();
-  };
-
+  const openChapters = () => dialogRef.current?.showModal();
+  const closeChapters = () => dialogRef.current?.close();
   const chooseChapter = (next: number) => {
     closeChapters();
     scrollToChapter(next, reduced ? "auto" : "smooth");
   };
 
+  const showWorld = chapter.kind !== "signature";
+
   return (
     <>
       <div className={reduced ? "story-track is-reduced" : "story-track"} ref={trackRef}>
-        <div className={ready || reduced ? "stage is-ready" : "stage"}>
-          {reduced ? null : <Thread progress={progress} />}
+        <div
+          className={ready || reduced ? "stage is-ready" : "stage"}
+          style={{ background: chapter.paper, color: chapter.ink }}
+        >
           <div className="copies">
             {chapters.map((item, itemIndex) => (
-              <ChapterCopy
-                key={item.id}
-                chapter={item}
-                active={reduced || itemIndex === index}
-              />
+              <ChapterCopy key={item.id} chapter={item} active={reduced || itemIndex === index} />
             ))}
+          </div>
+          <div className={showWorld ? "world is-visible" : "world"} aria-hidden="true">
+            <div className="ground" />
+            <LineFigure className="world-figure" />
+            <DrawingHand className="world-hand" />
           </div>
           <p className="sr-only" aria-live="polite">
             {`Chapter ${index + 1} of ${chapters.length}. ${chapter.label}. ${chapter.title}`}
@@ -134,13 +142,10 @@ export function StoryStage() {
               type="button"
               className="next-scene"
               onClick={() =>
-                scrollToChapter(
-                  index === chapters.length - 1 ? 0 : index + 1,
-                  reduced ? "auto" : "smooth",
-                )
+                scrollToChapter(index === chapters.length - 1 ? 0 : index + 1, reduced ? "auto" : "smooth")
               }
             >
-              {index === chapters.length - 1 ? "Back to the start" : "Scroll to continue"}
+              {index === 0 ? "Scroll to begin" : index === chapters.length - 1 ? "Back to the start" : "Keep going"}
               <IconArrowDown />
             </button>
             <span className="reading-links">

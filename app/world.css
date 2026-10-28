@@ -1,0 +1,224 @@
+.stage {
+  transition: background-color 0.55s ease, color 0.55s ease;
+}
+
+.stage .eyebrow,
+.stage .chapter-number,
+.stage .reading-link {
+  color: inherit;
+  opacity: 0.72;
+}
+
+.stage .copy,
+.stage .copy .note,
+.stage .copy-end .note {
+  color: inherit;
+}
+
+.copy-signature {
+  top: 18%;
+  max-width: none;
+}
+
+.signature-block {
+  position: relative;
+  width: min(720px, 78vw);
+  min-height: 180px;
+}
+
+.signature-name {
+  margin: 0;
+  font-family: var(--font-script), "Segoe Script", cursive;
+  font-size: clamp(92px, 11vw, 168px);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+}
+
+.copy-signature.active .signature-name {
+  animation: write-name 2.3s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.signature-hand {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  width: min(280px, 34vw);
+  height: auto;
+  color: inherit;
+  opacity: 0;
+}
+
+.copy-signature.active .signature-hand {
+  animation: write-hand 2.3s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.signature-caption {
+  max-width: 440px;
+  margin-top: 18px;
+  opacity: 0;
+}
+
+.copy-signature.active .signature-caption {
+  animation: caption-in 0.7s ease 1.7s forwards;
+}
+
+.signature-caption p {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+}
+
+.signature-caption .note {
+  font-size: 17px;
+  opacity: 0.72;
+}
+
+.world {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 64px;
+  height: 38%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.world.is-visible {
+  opacity: 1;
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22%;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.world-figure {
+  position: absolute;
+  left: 14%;
+  bottom: 22%;
+  width: min(170px, 18vw);
+  height: auto;
+}
+
+.world-hand {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  width: min(320px, 34vw);
+  height: auto;
+}
+
+.copy-split h2,
+.copy-end h2 {
+  color: inherit;
+}
+
+.copy-split .narration p,
+.copy-end .narration p {
+  color: inherit;
+}
+
+.inline-projects a {
+  border-bottom-color: currentColor;
+  color: inherit;
+}
+
+@keyframes write-name {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes write-hand {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateX(62%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+}
+
+@keyframes caption-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.story-track.is-reduced .copies {
+  padding: 0;
+}
+
+.story-track.is-reduced .world {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .copy-signature {
+    top: 22%;
+  }
+
+  .signature-name {
+    font-size: clamp(64px, 16vw, 92px);
+    white-space: normal;
+  }
+
+  .signature-hand {
+    width: 190px;
+    top: 28%;
+  }
+
+  .world {
+    height: 30%;
+    bottom: 96px;
+  }
+
+  .world-figure {
+    left: 6%;
+    width: 120px;
+  }
+
+  .world-hand {
+    width: 210px;
+    right: -4%;
+  }
+
+  .signature-caption p {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signature-name,
+  .copy-signature.active .signature-name {
+    clip-path: none;
+    animation: none;
+  }
+
+  .signature-hand,
+  .copy-signature.active .signature-hand {
+    animation: none;
+    opacity: 1;
+  }
+
+  .signature-caption,
+  .copy-signature.active .signature-caption {
+    animation: none;
+    opacity: 1;
+  }
+}

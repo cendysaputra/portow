@@ -17,7 +17,7 @@ export default function StoryPage() {
       </h1>
       <p>{site.hero.lead}</p>
       <p className="muted">{site.hero.note}</p>
-      {chapters.filter((chapter) => chapter.kind !== "hero").map((chapter) => {
+      {chapters.filter((chapter) => chapter.kind !== "signature").map((chapter) => {
         const linked = chapter.projectSlugs
           ? getProjectBySlugList(chapter.projectSlugs)
           : [];

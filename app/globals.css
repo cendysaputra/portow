@@ -27,11 +27,12 @@
 
 html {
   color: var(--ink);
-  background: var(--paper);
+  background: var(--stage, var(--paper));
   color-scheme: light;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.55s ease, color 0.55s ease;
 }
 
 body {
@@ -105,7 +106,8 @@ button:focus-visible {
   justify-content: space-between;
   padding: 0 var(--pad);
   z-index: 20;
-  background: linear-gradient(#ffffff 75%, #ffffff00);
+  color: var(--ink, #171717);
+  background: linear-gradient(var(--stage, #fff) 72%, transparent);
 }
 
 .wordmark {
@@ -940,8 +942,12 @@ button:focus-visible {
   visibility: visible;
   pointer-events: auto;
   transform: none;
-  max-width: 760px;
-  margin: 0 0 72px;
+  max-width: none;
+  min-height: 100svh;
+  margin: 0;
+  padding: 18vh var(--pad) 12vh;
+  background: var(--chapter-paper, #fff);
+  color: var(--chapter-ink, #171717);
 }
 
 .story-track.is-reduced .stage-footer,
