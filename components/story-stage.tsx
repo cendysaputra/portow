@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { chapters } from "@/content/site";
 import { ChapterCopy } from "@/components/chapter-copy";
 import { IconArrowDown, IconClose, IconPlus } from "@/components/icons";
+import { Thread } from "@/components/thread";
 
 export function StoryStage() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -13,13 +14,18 @@ export function StoryStage() {
   const [index, setIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [reduced, setReduced] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const apply = () => setReduced(media.matches);
     apply();
     media.addEventListener("change", apply);
-    return () => media.removeEventListener("change", apply);
+    const frameId = requestAnimationFrame(() => setReady(true));
+    return () => {
+      media.removeEventListener("change", apply);
+      cancelAnimationFrame(frameId);
+    };
   }, []);
 
   const scrollToChapter = useCallback(
@@ -102,7 +108,8 @@ export function StoryStage() {
   return (
     <>
       <div className={reduced ? "story-track is-reduced" : "story-track"} ref={trackRef}>
-        <div className="stage">
+        <div className={ready || reduced ? "stage is-ready" : "stage"}>
+          {reduced ? null : <Thread progress={progress} />}
           <div className="copies">
             {chapters.map((item, itemIndex) => (
               <ChapterCopy
