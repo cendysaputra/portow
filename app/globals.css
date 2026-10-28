@@ -793,6 +793,100 @@ button:focus-visible {
   padding-bottom: 4px;
 }
 
+.cv-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 150px 32px 90px;
+}
+
+.cv-page h1 {
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 65px);
+  letter-spacing: -0.055em;
+  margin: 0 0 10px;
+  line-height: 0.98;
+}
+
+.cv-page .role {
+  font-size: 23px;
+  letter-spacing: -0.03em;
+  margin: 0 0 22px;
+}
+
+.cv-page .intro {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.cv-page h2 {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  margin: 48px 0 20px;
+  border-top: 1px solid var(--hair);
+  padding-top: 22px;
+}
+
+.cv-page h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 22px 0 5px;
+}
+
+.cv-page p,
+.cv-page li {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.cv-page ul {
+  padding-left: 18px;
+  margin: 12px 0 0;
+}
+
+.cv-page .cv-dates {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 8px;
+}
+
+.cv-actions {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 28px 0 8px;
+  font-size: 13px;
+}
+
+.cv-actions a {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 5px;
+}
+
+.cv-contact {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.cv-contact a {
+  color: var(--ink);
+}
+
+.cv-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  list-style: none;
+  padding: 0;
+}
+
+.cv-focus li {
+  margin: 0;
+}
+
 .page-footer {
   border-top: 1px solid var(--hair);
   display: flex;
@@ -1001,6 +1095,15 @@ button:focus-visible {
   .reading-main {
     margin-top: 0;
     padding: 120px 24px 64px;
+  }
+
+  .cv-page {
+    margin-top: 0;
+    padding: 120px 24px 72px;
+  }
+
+  .cv-page h1 {
+    font-size: 48px;
   }
 
   .reading-main footer {
