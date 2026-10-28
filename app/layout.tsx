@@ -27,8 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <a className="skip" href="#begin">
-          Skip to content
+        <a className="skip" href="/story">
+          Read the story without animation
         </a>
         <Header />
         {children}
