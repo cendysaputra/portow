@@ -6,43 +6,32 @@ type DrawingProps = {
 /** Original line drawing of a hand with a pen. Not traced from the reference. */
 export function DrawingHand({ className }: DrawingProps) {
   return (
-    <svg className={className} viewBox="0 0 360 220" fill="none" aria-hidden="true">
-      <g
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M6 112h70" />
-        <path d="M76 98h48c6 0 10 4 10 10v8c0 6-4 10-10 10H76z" />
-        <path d="M88 98v28M104 98v28M120 98v28" />
-        <path d="M134 108c12-20 34-24 46-8 6 8 4 20-4 26" />
-        <path d="M166 118c16-8 36 0 42 16 4 10-2 20-14 22" />
-        <path d="M186 136c14 4 26 16 24 30" />
-        <path d="M148 132c-6 18-2 40 16 52 18 12 42 10 60-2 18-12 26-34 18-52" />
-        <path d="M178 176c20 22 54 48 104 58" />
-        <path d="M214 166c24 26 62 44 112 46" />
+    <svg className={className} viewBox="0 0 300 170" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 78h62" />
+        <rect x="66" y="64" width="46" height="26" rx="5" />
+        <path d="M78 64v26M92 64v26M104 64v26" />
+        <path d="M112 72c18-16 42-14 54 2 6 8 4 16-2 20" />
+        <path d="M128 90c22-2 40 10 44 24" />
+        <path d="M126 104c20 6 34 20 30 34" />
+        <path d="M118 84c-2 22 6 46 28 62 22 16 52 14 74-2" />
+        <path d="M160 140c16 14 46 28 92 30" />
+        <path d="M196 128c18 16 48 28 90 30" />
       </g>
     </svg>
   );
 }
 
-/** Original standing line figure. A simple body, not the reference character. */
+/** Original standing line figure. A simple cloak, not the reference character. */
 export function LineFigure({ className }: DrawingProps) {
   return (
     <svg className={className} viewBox="0 0 180 210" fill="none" aria-hidden="true">
-      <g
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="90" cy="36" r="18" />
-        <path d="M90 54c-22 36-46 78-50 132" />
-        <path d="M90 54c24 38 48 80 52 132" />
-        <path d="M74 88c-28 8-48-6-56-28" />
-        <path d="M108 92c26 10 44 2 54-18" />
-        <path d="M58 186H36M124 188h24" />
+      <g stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="90" cy="34" r="16" />
+        <path d="M90 50c-36 28-52 78-46 132" />
+        <path d="M90 50c36 28 52 78 46 132" />
+        <path d="M70 86c-26 6-40-8-46-26" />
+        <path d="M112 88c24 8 40-2 48-22" />
       </g>
     </svg>
   );

@@ -21,7 +21,9 @@ export function ChapterCopy({ chapter, active }: ChapterCopyProps) {
         <h1 className="sr-only">{chapter.title}</h1>
         <div className="signature-block">
           <p className="signature-name" aria-hidden="true">
-            {chapter.title}
+            {chapter.title.split(" ").map((part) => (
+              <span key={part}>{part}</span>
+            ))}
           </p>
           <DrawingHand className="signature-hand" />
         </div>

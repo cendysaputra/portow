@@ -92,7 +92,10 @@ export function WorkWalk({ projects }: { projects: Project[] }) {
                 <span>
                   Selected work <span className="walk-count">{String(index + 1).padStart(2, "0")} / {count}</span>
                 </span>
-                <a href="#work-reading">All projects</a>
+                <a href="#work-reading">
+                  <span className="wide-label">All projects</span>
+                  <span className="narrow-label">Index</span>
+                </a>
               </p>
               <h1>
                 {project.title}

@@ -26,15 +26,23 @@
   min-height: 180px;
 }
 
-.signature-name {
+.copy .signature-name {
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  max-width: none;
   font-family: var(--font-script), "Segoe Script", cursive;
-  font-size: clamp(92px, 11vw, 168px);
+  font-size: clamp(72px, 8.4vw, 128px);
   font-weight: 400;
-  line-height: 0.85;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
+  line-height: 0.82;
+  letter-spacing: 0;
+  color: inherit;
   clip-path: inset(0 100% 0 0);
+}
+
+.copy .signature-name span {
+  display: block;
+  white-space: nowrap;
 }
 
 .copy-signature.active .signature-name {
@@ -43,9 +51,9 @@
 
 .signature-hand {
   position: absolute;
-  top: 8%;
-  left: 8%;
-  width: min(280px, 34vw);
+  top: 58%;
+  left: 34%;
+  width: min(220px, 28vw);
   height: auto;
   color: inherit;
   opacity: 0;
@@ -112,9 +120,9 @@
 
 .world-hand {
   position: absolute;
-  right: 4%;
-  bottom: 4%;
-  width: min(320px, 34vw);
+  right: 6%;
+  bottom: 16%;
+  width: min(220px, 26vw);
   height: auto;
 }
 
@@ -142,15 +150,11 @@
 @keyframes write-hand {
   0% {
     opacity: 1;
-    transform: translateX(0);
-  }
-  85% {
-    opacity: 1;
-    transform: translateX(62%);
+    transform: translateX(-8%);
   }
   100% {
-    opacity: 0;
-    transform: translateX(70%);
+    opacity: 1;
+    transform: translateX(48%);
   }
 }
 
@@ -217,6 +221,10 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0.8;
+}
+
+.narrow-label {
+  display: none;
 }
 
 .walk-description p {
@@ -532,7 +540,19 @@
 @media (max-width: 800px) {
   .walk-copy {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 12px;
+  }
+
+  .wide-label {
+    display: none;
+  }
+
+  .narrow-label {
+    display: inline;
+  }
+
+  .walk-stage {
+    min-height: 0;
   }
 
   .walk-copy h1 {
@@ -611,14 +631,14 @@
     top: 22%;
   }
 
-  .signature-name {
-    font-size: clamp(64px, 16vw, 92px);
-    white-space: normal;
+  .copy .signature-name {
+    font-size: clamp(52px, 14vw, 72px);
   }
 
   .signature-hand {
-    width: 190px;
-    top: 28%;
+    width: 150px;
+    top: 62%;
+    left: 28%;
   }
 
   .world {
